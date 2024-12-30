@@ -3,57 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple HTML Page</title>
+    <title>Student Activities Board</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Welcome to My Simple HTML Page</h1>
-    <p>This is a paragraph of text on my simple HTML page.</p>
-    <p>Here is a link to <a href="https://www.google.com">Google</a>.</p>
-    <p>Here is an image of a cat:</p>
-    <img src="https://www.catster.com/wp-content/uploads/2018/05/A-gray-cat-crying-looking-upset.jpg" alt="A sad cat">
-    <p>Here is a list of items:</p>
-    <ul>
-        <li>Item 1</li>
-        <li>Item 2</li>
-        <li>Item 3</li>
-    </ul>
-    <p>Here is a table:</p>
-    <table>
-        <tr>
-            <th>Header 1</th>
-            <th>Header 2</th>
-        </tr>
-        <tr>
-            <td>Row 1, Cell 1</td>
-            <td>Row 1, Cell 2</td>
-        </tr>
-        <tr>
-            <td>Row 2, Cell 1</td>
-            <td>Row 2, Cell 2</td>
-        </tr>
-    </table>
-    <p>Here is a form:</p>
-    <form action="submit.php" method="post">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email">
-        <input type="submit" value="Submit">
-    </form>
-
-    <p>Here is a video:</p>
-    <video width="320" height="240" controls>
-        <source src="https://www.w3schools.com/html/mov
-        bbb.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-
-
-    <p>Here is an audio:</p>
-    <audio controls>
-        <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-    
+    <div class="container my-4">
+        <h1 class="text-center">Student Activities Board</h1>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <input type="text" id="filter-tags" class="form-control" placeholder="Filter by tags">
+            </div>
+            <div class="col-md-6">
+                <select id="sort-options" class="form-control">
+                    <option value="date-asc">Sort by Date (Ascending)</option>
+                    <option value="date-desc">Sort by Date (Descending)</option>
+                </select>
+            </div>
+        </div>
+        <div id="activities-container" class="row">
+            <!-- Activity tiles will be dynamically inserted here -->
+        </div>
+    </div>
+    <script src="main.js"></script>
 </body>
 </html>

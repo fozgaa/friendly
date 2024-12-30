@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "title": "AI Workshop",
+        "date": "2024-01-15",
+        "location": "Room 203, Main Building",
+        "description": "Learn about artificial intelligence and machine learning.",
+        "tags": ["AI", "workshop", "technology"],
+        "image": "assets/activity-images/ai-workshop.jpg"
+    },
+    {
+        "id": 2,
+        "title": "Sports Day",
+        "date": "2024-02-10",
+        "location": "University Sports Ground",
+        "description": "Participate in sports activities and win exciting prizes.",
+        "tags": ["sports", "fun", "outdoor"],
+        "image": "assets/activity-images/sports-day.jpg"
+    }
+]
