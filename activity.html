@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity Details</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container my-4">
+        <h1 id="activity-title" class="text-center">Activity Title</h1>
+        <p id="activity-location"><strong>Location:</strong> </p>
+        <p id="activity-date"><strong>Date:</strong> </p>
+        <p id="activity-description"><strong>Description:</strong> </p>
+
+        <!-- Display the image at the bottom -->
+        <div id="activity-images" class="mt-4">
+            <img id="activity-image" src="" alt="Activity Image" class="img-fluid mb-4">
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const activityId = decodeURIComponent(urlParams.get('id'));
+
+            // Default images for missing images
+            const defaultImages = [
+                "assets/default-images/default1.jpg",
+                "assets/default-images/default2.jpg",
+                "assets/default-images/default3.jpg"
+            ];
+
+            fetch("activities.json")
+                .then(response => response.json())
+                .then(data => {
+                    const activity = data.find(a => a.title === activityId);
+                    if (activity) {
+                        document.getElementById("activity-title").textContent = activity.title;
+                        document.getElementById("activity-location").textContent = `Location: ${activity.location}`;
+                        document.getElementById("activity-date").textContent = `Date: ${activity.date}`;
+                        document.getElementById("activity-description").textContent = `Description: ${activity.description}`;
+
+                        // Set the image or default if not present
+                        const activityImage = activity.image || defaultImages[Math.floor(Math.random() * defaultImages.length)];
+                        document.getElementById("activity-image").src = activityImage;
+                    } else {
+                        document.getElementById("activity-title").textContent = "Activity not found";
+                    }
+                })
+                .catch(error => {
+                    console.error("Error loading activity details:", error);
+                    document.getElementById("activity-title").textContent = "Error loading activity details";
+                });
+        });
+    </script>
+</body>
+</html>
