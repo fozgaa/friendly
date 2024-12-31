@@ -1,0 +1,27 @@
+.activity-card {
+    margin-bottom: 20px;
+}
+
+.activity-card img {
+    max-height: 200px;
+    object-fit: cover;
+}
+
+.bg-light {
+    border-right: 1px solid #ddd;  /* Light border for separation */
+}
+
+.nav-link {
+    font-weight: 500;
+    color: #333;
+}
+
+.nav-link.active {
+    font-weight: 700;
+    color: #007bff;  /* Active link color */
+}
+
+h4 {
+    margin-top: 20px;
+    font-size: 1.2rem;
+}

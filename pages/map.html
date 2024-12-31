@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Activities Board</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="d-flex" style="height: 100vh;">
+        <div class="bg-light p-3" style="width: 250px; height: 100vh;">
+            <h4>Menu</h4>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="/index.html">Board</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/pages/map.html">Map</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pages/chat.html">Chat</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pages/history.html">History</a>
+                </li>
+            </ul>
+            <hr>
+            <h4>Account</h4>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="/account/login.html">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/account/signup.html">Sign Up</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="container my-4" style="flex: 1;">
+            <h1 class="text-center">Map</h1>
+            <div id="map" style="height: 80vh;"></div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize map
+        const map = L.map('map').setView([52.2298, 21.0118], 13);
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Load activities data
+        fetch('/data/activities.json')
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(activity => {
+                    if (activity.lat && activity.lng) {
+                        L.marker([activity.lat, activity.lng])
+                            .addTo(map)
+                            .bindPopup(`<b>${activity.title}</b><br>${activity.description}`);
+                    }
+                });
+            })
+            .catch(error => console.error('Error loading activities:', error));
+    </script>
+</body>
+</html>

@@ -4,27 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Activities Board</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <div class="container my-4">
-        <h1 class="text-center">Student Activities Board</h1>
-        <div class="row mb-3">
-            <div class="col-md-6">
-                <input type="text" id="filter-tags" class="form-control" placeholder="Filter by tags">
-            </div>
-            <div class="col-md-6">
-                <select id="sort-options" class="form-control">
-                    <option value="date-asc">Sort by Date (Ascending)</option>
-                    <option value="date-desc">Sort by Date (Descending)</option>
-                </select>
-            </div>
+    <!-- Sidebar -->
+    <div class="d-flex" style="height: 100vh;">
+        <div class="bg-light p-3" style="width: 250px; height: 100vh;">
+            <h4>Menu</h4>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" href="index.html">Board</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pages/map.html">Map</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pages/chat.html">Chat</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pages/history.html">History</a>
+                </li>
+            </ul>
+            <hr>
+            <h4>Account</h4>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="/account/login.html">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/account/signup.html">Sign Up</a>
+                </li>
+            </ul>
         </div>
-        <div id="activities-container" class="row">
-            <!-- Activity tiles will be dynamically inserted here -->
+
+        <!-- Main Content -->
+        <div class="container my-4" style="flex: 1;">
+            <h1 class="text-center">Student Activities Board</h1>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <input type="text" id="filter-tags" class="form-control" placeholder="Filter by tags">
+                </div>
+                <div class="col-md-6">
+                    <select id="sort-options" class="form-control">
+                        <option value="date-asc">Sort by Date (Ascending)</option>
+                        <option value="date-desc">Sort by Date (Descending)</option>
+                    </select>
+                </div>
+            </div>
+            <div id="activities-container" class="row">
+                <!-- Activity tiles will be dynamically inserted here -->
+            </div>
         </div>
     </div>
-    <script src="main.js"></script>
+
+    <script src="/js/main.js"></script>
 </body>
 </html>

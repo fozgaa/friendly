@@ -4,7 +4,9 @@
         "date": "2025-01-01",
         "location": "Campus Hall",
         "description": "Join us for this exciting event!",
-        "tags": ["Networking", "Technology"]
+        "tags": ["Networking", "Technology"],
+        "lat": 52.21164580870227,
+        "lng": 20.98240814613052
     },
     {
         "title": "Sample Event 2",
@@ -18,7 +20,9 @@
         "date": "2025-03-20",
         "location": "Main Campus Square",
         "description": "A fun meet-and-greet for students!",
-        "tags": ["Social", "Networking"]
+        "tags": ["Social", "Networking"],
+        "lat": 52.21199344464907,
+        "lng": 20.98404999794261
     },
     {
         "title": "Sample Event 4",
@@ -26,7 +30,9 @@
         "location": "Science Building, Room 101",
         "description": "A seminar on AI and Machine Learning.",
         "tags": ["Seminar", "Technology", "AI"],
-        "image": "assets/activity-images/ai-workshop.jpg"
+        "image": "assets/activity-images/ai-workshop.jpg",
+        "lat": 52.2297,
+        "lng": 21.0113
     },
     {
         "title": "Sample Event 5",
@@ -34,41 +40,53 @@
         "location": "Sports Complex",
         "description": "A sports day filled with fun and games.",
         "tags": ["Sports", "Outdoor"],
-        "image": "assets/activity-images/sports-day.jpg"
+        "image": "assets/activity-images/sports-day.jpg",
+        "lat": 52.211213671310524,
+        "lng": 20.986469172294257
     },
     {
         "title": "Sample Event 6",
         "date": "2025-06-18",
         "location": "Art Gallery",
         "description": "An exhibition of student art projects.",
-        "tags": ["Art", "Exhibition"]
+        "tags": ["Art", "Exhibition"],
+        "lat": 52.2302,
+        "lng": 21.0117
     },
     {
         "title": "Sample Event 7",
         "date": "2025-07-25",
         "location": "Student Union Building",
         "description": "A networking event for upcoming graduates.",
-        "tags": ["Networking", "Career"]
+        "tags": ["Networking", "Career"],
+        "lat": 52.211953577350556,
+        "lng": 20.987435864910232
     },
     {
         "title": "Sample Event 8",
         "date": "2025-08-12",
         "location": "Outdoor Amphitheater",
         "description": "A music festival celebrating student talent.",
-        "tags": ["Music", "Festival"]
+        "tags": ["Music", "Festival"],
+        "lat": 52.2298,
+        "lng": 21.0122
     },
     {
         "title": "Sample Event 9",
         "date": "2025-09-09",
         "location": "Cafeteria",
         "description": "A cooking competition with live audience.",
-        "tags": ["Competition", "Food"]
+        "tags": ["Competition", "Food"],
+        "lat": 52.240019220530414,
+        "lng": 21.02015879363914
     },
     {
         "title": "Sample Event 10",
         "date": "2025-10-01",
         "location": "Conference Hall",
         "description": "A tech conference with industry leaders.",
-        "tags": ["Conference", "Technology"]
+        "tags": ["Conference", "Technology"],
+        "lat": 52.240534855828,
+        "lng": 21.017525646802444
     }
 ]
