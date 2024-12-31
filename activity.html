@@ -44,7 +44,7 @@
         const urlParams = new URLSearchParams(window.location.search);
         const activityId = decodeURIComponent(urlParams.get('id'));
 
-        fetch("/data/activities.json")
+        fetch("data/activities.json")
             .then(response => response.json())
             .then(data => {
                 const activity = data.find(a => a.title === activityId);
