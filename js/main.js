@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "assets/default-images/default9.jpg"
     ];
 
-    fetch("/data/activities.json")
+    fetch("data/activities.json")
         .then(response => response.json())
         .then(data => {
             let activities = data; // Store original activities
