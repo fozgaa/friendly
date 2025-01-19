@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     card.setAttribute("data-tags", activity.tags.join(",").toLowerCase());
 
                     const cardLink = document.createElement("a");
-                    cardLink.href = `../pages/activity.html?id=${encodeURIComponent(activity.id)}`;
+                    cardLink.href = `pages/activity.html?id=${encodeURIComponent(activity.id)}`;
 
                     cardLink.style.textDecoration = 'none';
                     cardLink.style.color = 'inherit';

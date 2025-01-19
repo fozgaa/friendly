@@ -16,7 +16,7 @@
                     <a class="nav-link" href="pages/map.html">Map</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="boardLink" href="index.html">Board</a>
+                    <a class="nav-link active" id="boardLink" href="index.html">Board</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="pages/chat.html">Chat</a>
@@ -61,12 +61,6 @@
             sidebar.classList.toggle('show');
             document.querySelector('.main-content').style.marginLeft = sidebar.classList.contains('show') ? '250px' : '0';
         });
-
-        const currentPage = window.location.pathname;
-        if (currentPage === '/index.html' || currentPage === '/') {
-            const boardLink = document.getElementById('boardLink');
-            boardLink.classList.add('active');
-        }
     </script>
 </body>
 </html>
