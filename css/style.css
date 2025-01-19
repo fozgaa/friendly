@@ -1,27 +1,229 @@
-.activity-card {
-    margin-bottom: 20px;
+.sidebar {
+    min-height: 100vh;
+    height: auto;
 }
 
-.activity-card img {
-    max-height: 200px;
+.sidebar {
+    background-color: #343a40;
+    color: white;
+    padding-top: 30px;
+    width: 250px;
+}
+
+.sidebar .nav-link:hover {
+    background-color: #e0e0e0;
+    text-decoration: none;
+}
+
+.sidebar .nav-link.active {
+    background-color: #007bff;
+    color: white !important;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.sidebar .nav-link.active:hover {
+    background-color: #0056b3;
+    text-decoration: none;
+}
+
+.form-control, .custom-select {
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding-left: 40px;
+    font-size: 16px;
+    height: 50px;
+    transition: all 0.3s ease;
+}
+.form-text {
+    font-size: 0.9rem;
+    color: #666;
+    text-align: center;
+}
+
+.form-control:focus, .custom-select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.form-control::placeholder {
+    color: #aaa;
+}
+
+#filter-tags {
+    background-position: 10px center;
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    box-shadow: none;
+}
+
+.custom-select option:hover {
+    background-color: #d3d3d3;
+}
+
+.custom-select option {
+    padding: 10px;
+}
+
+.filter-sort-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.filter-sort-bar .form-control, .filter-sort-bar .custom-select {
+    flex-grow: 1;
+    max-width: 48%;
+}
+
+.form-control:hover, .custom-select:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 767px) {
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: -250px;
+        width: 250px;
+        height: 100%;
+        background-color: #f8f9fa;
+        transition: 0.3s;
+    }
+    .sidebar.show {
+        left: 0;
+    }
+    .container {
+        margin-left: 0;
+    }
+}
+
+.main-content {
+    transition: margin-left 0.3s;
+}
+
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-height: 400px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-img-top {
+    border-radius: 10px 10px 0 0;
+    height: 200px;
     object-fit: cover;
 }
 
-.bg-light {
-    border-right: 1px solid #ddd;  /* Light border for separation */
+.card-body {
+    flex: 1;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.card-body p {
+    margin: 0;
+}
+
+.col-md-3 {
+    max-width: 23%;
+    margin-bottom: 20px;
 }
 
 .nav-link {
-    font-weight: 500;
+    color: black !important;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f7f7f7;
+}
+
+.container {
+    padding: 20px;
+}
+
+h1 {
+    font-size: 36px;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.activity-card .card-body .card-title,
+.activity-card .card-body p {
     color: #333;
 }
 
-.nav-link.active {
-    font-weight: 700;
-    color: #007bff;  /* Active link color */
+.activity-card .card-body a {
+    color: inherit;
+    text-decoration: none;
 }
 
-h4 {
-    margin-top: 20px;
-    font-size: 1.2rem;
+.btn-group .btn {
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.btn-group .btn:hover {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.btn-group .btn:focus {
+    box-shadow: none;
+}
+
+.btn-outline-primary {
+    background-color: white;
+    border-color: #007bff;
+    color: #007bff;
+}
+
+.btn-outline-primary:hover {
+    background-color: #f0f0f0;
+    color: #007bff;
+}
+
+.btn-outline-primary:active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
 }

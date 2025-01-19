@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friendly</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        #map-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px auto;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            width: 95%;
+            max-width: 1200px;
+            overflow: hidden;
+        }
+
+        #map {
+            height: 50vh;
+            width: 100%;
+        }
+
+        .leaflet-popup-content a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            #map {
+                height: 40vh;
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin-top: 40px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .activity-description {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .activity-img {
+            max-width: 80%;
+            margin: 20px auto;
+            display: block;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="d-flex flex-column flex-md-row">
+        <nav class="sidebar bg-light p-3" role="navigation" aria-label="Main Navigation">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="../pages/map.html">Map</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../index.html">Board</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../pages/chat.html">Chat</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../pages/history.html">History</a>
+                </li>
+            </ul>
+            <hr>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="../account/login.html">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../account/signup.html">Sign Up</a>
+                </li>
+            </ul>
+        </nav>
+
+        <main class="container my-4 main-content" style="flex: 1;">
+            <button class="btn btn-primary d-md-none" id="sidebar-toggle" aria-label="Toggle Sidebar">☰</button>
+            <div id="activity-details">
+                <!-- Activity details will be populated here -->
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const activityId = urlParams.get('id');
+
+        const defaultImages = [
+            "../assets/default-images/default1.jpg",
+            "../assets/default-images/default2.jpg",
+            "../assets/default-images/default3.jpg",
+            "../assets/default-images/default4.jpg",
+            "../assets/default-images/default5.jpg",
+            "../assets/default-images/default6.jpg",
+            "../assets/default-images/default7.jpg",
+            "../assets/default-images/default8.jpg",
+            "../assets/default-images/default9.jpg"
+        ];
+
+        fetch('../data/activities.json')
+            .then(response => response.json())
+            .then(data => {
+                const activity = data.find(item => item.id === activityId);
+                if (activity) {
+                    const hash = (str) => {
+                        let hashValue = 0;
+                        for (let i = 0; i < str.length; i++) {
+                            hashValue = (hashValue << 5) - hashValue + str.charCodeAt(i);
+                        }
+                        return Math.abs(hashValue);
+                    };
+
+                    const seed = hash(activity.title);
+                    const activityImage = activity.image ? `../${activity.image}` : defaultImages[seed % defaultImages.length];
+
+                    let activityDetailsHTML = `
+                        <h1>${activity.title}</h1>
+                        <p class="activity-description">${activity.description}</p>
+                    `;
+
+                    if (activity.lat && activity.lng) {
+                        activityDetailsHTML += `
+                            <div id="map-container">
+                                <div id="map"></div>
+                            </div>
+                        `;
+                    }
+
+                    activityDetailsHTML += `
+                        <img src="${activityImage}" alt="${activity.title}" class="activity-img">
+                    `;
+
+                    document.getElementById('activity-details').innerHTML = activityDetailsHTML;
+
+                    if (activity.lat && activity.lng) {
+                        const map = L.map('map').setView([activity.lat, activity.lng], 13);
+
+                        L.tileLayer('https://cartodb-basemaps-a.global.ssl.fastly.net/rastertiles/voyager/{z}/{x}/{y}.png', {
+                            maxZoom: 19,
+                            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                        }).addTo(map);
+
+                        L.marker([activity.lat, activity.lng])
+                            .addTo(map)
+                            .bindPopup(`
+                                <div class="card-body">
+                                    <h5 class="card-title">${activity.title}</h5>
+                                    <p class="card-text">${activity.description}</p>
+                                </div>
+                            `);
+                    }
+                } else {
+                    document.getElementById('activity-details').innerHTML = `<p>Activity not found.</p>`;
+                }
+            })
+            .catch(error => console.error('Error loading activity details:', error));
+    </script>
+</body>
+</html>

@@ -1,9 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const activitiesContainer = document.getElementById("activities-container");
     const filterTagsInput = document.getElementById("filter-tags");
-    const sortOptions = document.getElementById("sort-options");
 
-    // Default images if no image is provided in JSON
     const defaultImages = [
         "assets/default-images/default1.jpg",
         "assets/default-images/default2.jpg",
@@ -19,41 +17,47 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch("data/activities.json")
         .then(response => response.json())
         .then(data => {
-            let activities = data; // Store original activities
+            let activities = data;
 
-            // Function to display activities based on the filtered data
             function displayActivities(filteredActivities) {
-                activitiesContainer.innerHTML = ""; // Clear any existing content
+                activitiesContainer.innerHTML = "";
                 filteredActivities.forEach(activity => {
                     const card = document.createElement("div");
-                    card.className = "col-md-4 mb-4"; // Add margin-bottom for spacing
-                    card.setAttribute("data-tags", activity.tags.join(",").toLowerCase()); // Store tags for filtering
+                    card.className = "col-md-4 mb-4";
+                    card.setAttribute("data-tags", activity.tags.join(",").toLowerCase());
 
-                    // Create an anchor to link to the activity details page
                     const cardLink = document.createElement("a");
-                    cardLink.href = `activity.html?id=${encodeURIComponent(activity.title)}`;
-                    cardLink.className = "text-decoration-none";
+                    cardLink.href = `../pages/activity.html?id=${encodeURIComponent(activity.id)}`;
 
-                    // Select image for activity (use a default if not specified)
-                    const activityImage = activity.image || defaultImages[Math.floor(Math.random() * defaultImages.length)];
+                    cardLink.style.textDecoration = 'none';
+                    cardLink.style.color = 'inherit';
 
-                    // Create the activity card with image
+                    const hash = (str) => {
+                        let hashValue = 0;
+                        for (let i = 0; i < str.length; i++) {
+                            hashValue = (hashValue << 5) - hashValue + str.charCodeAt(i);
+                        }
+                        return Math.abs(hashValue);
+                    };
+            
+                    const seed = hash(activity.title);
+                    const activityImage = activity.image || defaultImages[seed % defaultImages.length];
+            
                     cardLink.innerHTML = `
-                        <div class="card activity-card">
-                            <img src="${activityImage}" class="card-img-top" alt="${activity.title}">
-                            <div class="card-body">
-                                <h5 class="card-title">${activity.title}</h5>
-                                <p><strong>Location:</strong> ${activity.location}</p>
-                                <p><strong>Date:</strong> ${activity.date}</p>
+                        <div class="card activity-card shadow-sm border-0">
+                            <img src="${activityImage}" class="card-img-top rounded-top" alt="${activity.title}">
+                            <div class="card-body p-4">
+                                <h5 class="card-title text-dark mb-3">${activity.title}</h5>
+                                <p class="card-text text-muted mb-2"><strong>Location:</strong> ${activity.location}</p>
+                                <p class="card-text text-muted mb-0"><strong>Date:</strong> ${activity.date}</p>
                             </div>
                         </div>`;
-
+            
                     card.appendChild(cardLink);
                     activitiesContainer.appendChild(card);
                 });
-            }
+            }            
 
-            // Function to sort activities by date
             function sortActivities(filteredActivities, sortOption) {
                 return filteredActivities.sort((a, b) => {
                     const dateA = new Date(a.date);
@@ -68,23 +72,25 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
             }
 
-            // Initial display of all activities
             displayActivities(activities);
 
-            // Filter activities based on input
             filterTagsInput.addEventListener("input", (event) => {
                 const filterValue = event.target.value.toLowerCase();
                 const filteredActivities = activities.filter(activity => {
                     return activity.tags.some(tag => tag.toLowerCase().includes(filterValue));
                 });
 
-                const sortedActivities = sortActivities(filteredActivities, sortOptions.value);
+                const sortedActivities = sortActivities(filteredActivities, "date-asc");
                 displayActivities(sortedActivities);
             });
 
-            // Sort activities based on selected option
-            sortOptions.addEventListener("change", () => {
-                const sortedActivities = sortActivities(activities, sortOptions.value);
+            document.getElementById("sort-asc").addEventListener("click", () => {
+                const sortedActivities = sortActivities(activities, "date-asc");
+                displayActivities(sortedActivities);
+            });
+
+            document.getElementById("sort-desc").addEventListener("click", () => {
+                const sortedActivities = sortActivities(activities, "date-desc");
                 displayActivities(sortedActivities);
             });
         })

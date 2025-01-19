@@ -3,48 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Activities Board</title>
+    <title>Sign Up | Friendly</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .main-content {
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 30px;
+            margin-left: 250px;
+            max-width: 500px;
+            margin-top: 80px;
+        }
+        .main-content h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            font-weight: 600;
+            color: #333;
+        }
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .form-control {
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            padding: 12px;
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+
+        .btn-center {
+            align-self: center;
+            width: auto;
+        }
+
+        .error-message {
+            font-size: 1rem;
+            color: red;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <!-- Sidebar -->
-    <div class="d-flex" style="height: 100vh;">
-        <div class="bg-light p-3" style="width: 250px; height: 100vh;">
-            <h4>Menu</h4>
+    <div class="d-flex flex-column flex-md-row">
+        <div class="sidebar bg-light p-3">
             <ul class="nav flex-column">
-                <li class="nav-item">
-                    <a class="nav-link" href="../index.html">Board</a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../pages/map.html">Map</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="../pages/chat.html">Chat</a>
+                    <a class="nav-link" id="boardLink" href="../index.html">Board</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../pages/chat.html">Chat</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../pages/history.html">History</a>
                 </li>
             </ul>
             <hr>
-            <h4>Account</h4>
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link" href="../account/login.html">Login</a>
+                    <a class="nav-link" href="login.html">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../account/signup.html">Sign Up</a>
+                    <a class="nav-link active" href="signup.html">Sign Up</a>
                 </li>
             </ul>
         </div>
 
         <!-- Main Content -->
-        <div class="container my-4" style="flex: 1;">
-            <h1 class="text-center">Sign up</h1>
-            <p class="text-center">This feature is currently in development.</p>
+        <div class="container my-4 main-content">
+            <button class="btn btn-primary d-md-none sidebar-toggle" id="sidebar-toggle">☰</button>
+            
+            <div class="login-form">
+                <form id="signupForm">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-center">Sign Up</button>
+                </form>
+                <p class="form-text">Already have an account? <a href="login.html">Login</a></p>
+                <p class="error-message" id="errorMessage" style="display: none;">Can't sign up right now</p>
+            </div>
         </div>
     </div>
 
     <script src="../js/main.js"></script>
+    <script>
+        // Toggle sidebar visibility for small screens
+        const sidebarToggle = document.getElementById('sidebar-toggle');
+        const sidebar = document.querySelector('.sidebar');
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('show');
+            document.querySelector('.main-content').style.marginLeft = sidebar.classList.contains('show') ? '250px' : '0';
+        });
+
+        document.getElementById('signupForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            document.getElementById('errorMessage').style.display = 'block';
+        });
+    </script>
 </body>
 </html>

@@ -1,92 +1,202 @@
 [
     {
-        "title": "Sample Event 1",
+        "id": "1",
+        "title": "Tech Innovators Meetup",
         "date": "2025-01-01",
         "location": "Campus Hall",
-        "description": "Join us for this exciting event!",
+        "description": "Kick off the new year by connecting with industry professionals and tech enthusiasts. This event offers opportunities to network, share ideas, and learn about cutting-edge technologies shaping the future.",
         "tags": ["Networking", "Technology"],
         "lat": 52.21164580870227,
         "lng": 20.98240814613052
     },
     {
-        "title": "Sample Event 2",
+        "id": "2",
+        "title": "Creative Coding Workshop",
         "date": "2025-02-15",
         "location": "Library Auditorium",
-        "description": "A workshop on innovative ideas in tech.",
+        "description": "Dive into a hands-on workshop exploring innovative programming techniques. Ideal for students and developers looking to enhance their skills and apply creative solutions to real-world challenges.",
         "tags": ["Workshop", "Technology"]
     },
     {
-        "title": "Sample Event 3",
+        "id": "3",
+        "title": "Campus Connection: Meet & Greet",
         "date": "2025-03-20",
         "location": "Main Campus Square",
-        "description": "A fun meet-and-greet for students!",
+        "description": "Join fellow students for a lively meet-and-greet event. Build friendships, enjoy activities, and explore campus resources in a relaxed and fun atmosphere.",
         "tags": ["Social", "Networking"],
         "lat": 52.21199344464907,
         "lng": 20.98404999794261
     },
     {
-        "title": "Sample Event 4",
+        "id": "4",
+        "title": "Frontiers of AI: A Seminar on Machine Learning",
         "date": "2025-04-10",
         "location": "Science Building, Room 101",
-        "description": "A seminar on AI and Machine Learning.",
+        "description": "Discover the latest advancements in Artificial Intelligence and Machine Learning at this in-depth seminar. Gain insights from expert speakers and engage in discussions about the ethical and practical implications of AI.",
         "tags": ["Seminar", "Technology", "AI"],
         "image": "assets/activity-images/ai-workshop.jpg",
         "lat": 52.2297,
         "lng": 21.0113
     },
     {
-        "title": "Sample Event 5",
+        "id": "5",
+        "title": "University Sports Extravaganza",
         "date": "2025-05-05",
         "location": "Sports Complex",
-        "description": "A sports day filled with fun and games.",
+        "description": "Get active and have fun at our annual sports day! Participate in various games and activities, or cheer on your friends in an atmosphere of excitement and camaraderie.",
         "tags": ["Sports", "Outdoor"],
         "image": "assets/activity-images/sports-day.jpg",
         "lat": 52.211213671310524,
         "lng": 20.986469172294257
     },
     {
-        "title": "Sample Event 6",
+        "id": "6",
+        "title": "Byteland Art Showcase",
         "date": "2025-06-18",
         "location": "Art Gallery",
-        "description": "An exhibition of student art projects.",
+        "description": "Explore the creativity of our students at this inspiring art exhibition. Enjoy diverse works that reflect unique perspectives and innovative techniques.",
         "tags": ["Art", "Exhibition"],
         "lat": 52.2302,
         "lng": 21.0117
     },
     {
-        "title": "Sample Event 7",
+        "id": "7",
+        "title": "Graduate Networking Night",
         "date": "2025-07-25",
         "location": "Student Union Building",
-        "description": "A networking event for upcoming graduates.",
+        "description": "Prepare for your future career by attending this exclusive networking event. Meet recruiters, industry professionals, and fellow graduates to expand your career horizons.",
         "tags": ["Networking", "Career"],
         "lat": 52.211953577350556,
         "lng": 20.987435864910232
     },
     {
-        "title": "Sample Event 8",
+        "id": "8",
+        "title": "Harmonic Horizons Music Festival",
         "date": "2025-08-12",
         "location": "Outdoor Amphitheater",
-        "description": "A music festival celebrating student talent.",
+        "description": "Celebrate the vibrant talents of student musicians at our outdoor music festival. Enjoy performances across various genres in a lively and energetic setting.",
         "tags": ["Music", "Festival"],
         "lat": 52.2298,
         "lng": 21.0122
     },
     {
-        "title": "Sample Event 9",
+        "id": "9",
+        "title": "Culinary Battle Royale",
         "date": "2025-09-09",
         "location": "Cafeteria",
-        "description": "A cooking competition with live audience.",
+        "description": "Witness an intense and delicious cooking competition! Cheer for your favorite teams as they craft culinary masterpieces live on stage.",
         "tags": ["Competition", "Food"],
         "lat": 52.240019220530414,
         "lng": 21.02015879363914
     },
     {
-        "title": "Sample Event 10",
+        "id": "10",
+        "title": "Tech Visionaries: 2025 Conference",
         "date": "2025-10-01",
         "location": "Conference Hall",
-        "description": "A tech conference with industry leaders.",
+        "description": "Join us for a dynamic tech conference featuring renowned industry leaders. Explore the latest trends, innovations, and insights shaping the world of technology.",
         "tags": ["Conference", "Technology"],
         "lat": 52.240534855828,
         "lng": 21.017525646802444
+    },
+    {
+        "id": "11",
+        "title": "Next-Gen Robotics Challenge",
+        "date": "2025-01-15",
+        "location": "Engineering Building, Room 205",
+        "description": "Compete in a robotics challenge that pushes the limits of automation. Showcase your skills in programming and problem-solving as you build and race robots with cutting-edge technology.",
+        "tags": ["Competition", "Robotics", "Technology"],
+        "lat": 52.21173523821516,
+        "lng": 20.98203295686253
+    },
+    {
+        "id": "12",
+        "title": "Virtual Reality Design Workshop",
+        "date": "2025-02-22",
+        "location": "Tech Lab, Room 309",
+        "description": "Join us for an immersive workshop on designing virtual environments. Learn the fundamentals of VR design, from storyboarding to creating interactive experiences, in an engaging hands-on session.",
+        "tags": ["Workshop", "Virtual Reality", "Design"],
+        "lat": 52.23114526342403,
+        "lng": 20.98425377808745
+    },
+    {
+        "id": "13",
+        "title": "Student Leadership Summit",
+        "date": "2025-03-14",
+        "location": "University Conference Center",
+        "description": "Engage in leadership development workshops and discussions aimed at empowering the next generation of student leaders. Gain the skills necessary to drive change on campus and in the community.",
+        "tags": ["Leadership", "Development", "Networking"],
+        "lat": 52.21268437879471,
+        "lng": 20.98111638995199
+    },
+    {
+        "id": "14",
+        "title": "AI & Ethics Forum",
+        "date": "2025-04-25",
+        "location": "Philosophy Department, Room 101",
+        "description": "Participate in thought-provoking discussions on the ethical implications of Artificial Intelligence. Explore real-world dilemmas, including privacy concerns, bias in AI, and the future of human-machine interaction.",
+        "tags": ["Seminar", "AI", "Ethics"],
+        "lat": 52.23095250967247,
+        "lng": 21.01309636872325
+    },
+    {
+        "id": "15",
+        "title": "Green Campus Sustainability Fair",
+        "date": "2025-05-10",
+        "location": "Central Courtyard",
+        "description": "Explore sustainable living through interactive booths, hands-on activities, and expert talks. Learn about renewable energy, eco-friendly practices, and ways to reduce your carbon footprint.",
+        "tags": ["Sustainability", "Environment", "Fair"],
+        "lat": 52.2127845636934,
+        "lng": 20.98690163947102
+    },
+    {
+        "id": "16",
+        "title": "Global Art & Culture Exhibition",
+        "date": "2025-06-30",
+        "location": "Student Art Gallery",
+        "description": "Discover global artistic expressions and cultural representations through an exhibition featuring student works from around the world. A celebration of diversity through visual art.",
+        "tags": ["Art", "Exhibition", "Culture"],
+        "lat": 52.23049320664792,
+        "lng": 21.01191714165107
+    },
+    {
+        "id": "17",
+        "title": "Startup Pitch Night",
+        "date": "2025-07-10",
+        "location": "Innovation Hub, Room 202",
+        "description": "Witness the next wave of entrepreneurial ideas at our Startup Pitch Night. Students will pitch their business concepts to a panel of judges for a chance to win seed funding and mentorship.",
+        "tags": ["Networking", "Entrepreneurship", "Startup"],
+        "lat": 52.211934547720225,
+        "lng": 20.98722196392786
+    },
+    {
+        "id": "18",
+        "title": "Outdoor Movie Night Under the Stars",
+        "date": "2025-08-07",
+        "location": "University Park",
+        "description": "Grab a blanket and enjoy an outdoor movie screening under the stars. Bring your friends for an evening of classic films and great atmosphere with free popcorn and drinks.",
+        "tags": ["Social", "Outdoor", "Movie"],
+        "lat": 52.22948478543528,
+        "lng": 21.01130601696075
+    },
+    {
+        "id": "19",
+        "title": "Student Cooking Showdown",
+        "date": "2025-09-15",
+        "location": "Student Kitchen, Building C",
+        "description": "Cook, compete, and create culinary masterpieces in this fun cooking competition. Watch live demonstrations and join in the fun as students face off to prepare the best dishes.",
+        "tags": ["Competition", "Food", "Social"],
+        "lat": 52.23965487559393,
+        "lng": 21.01913451468636
+    },
+    {
+        "id": "20",
+        "title": "Future Tech: The Next Decade",
+        "date": "2025-10-05",
+        "location": "Tech Conference Center, Room 405",
+        "description": "Join industry leaders and futurists for a conference that delves into the next decade of technological innovation. Explore emerging trends in AI, blockchain, and robotics shaping tomorrow's world.",
+        "tags": ["Conference", "Technology", "Innovation"],
+        "lat": 52.24009831364624,
+        "lng": 21.01698792045979
     }
 ]

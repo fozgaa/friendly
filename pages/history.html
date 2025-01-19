@@ -3,31 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Activities Board</title>
+    <title>History | Friendly</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <!-- Sidebar -->
-    <div class="d-flex" style="height: 100vh;">
-        <div class="bg-light p-3" style="width: 250px; height: 100vh;">
-            <h4>Menu</h4>
+    <div class="d-flex flex-column flex-md-row">
+        <div class="sidebar bg-light p-3">
             <ul class="nav flex-column">
-                <li class="nav-item">
-                    <a class="nav-link" href="../index.html">Board</a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../pages/map.html">Map</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="../pages/chat.html">Chat</a>
+                    <a class="nav-link" id="boardLink" href="../index.html">Board</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../pages/history.html">History</a>
+                    <a class="nav-link" href="../pages/chat.html">Chat</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="../pages/history.html">History</a>
                 </li>
             </ul>
             <hr>
-            <h4>Account</h4>
             <ul class="nav flex-column">
                 <li class="nav-item">
                     <a class="nav-link" href="../account/login.html">Login</a>
@@ -39,10 +37,28 @@
         </div>
 
         <!-- Main Content -->
-        <div class="container my-4" style="flex: 1;">
-            <h1 class="text-center">History</h1>
-            <p class="text-center">This feature is currently in development.</p>
+        <div class="container my-4 main-content" style="flex: 1;">
+            <button class="btn btn-primary d-md-none" id="sidebar-toggle">☰</button>
+            <div class="alert alert-warning">
+                You have to be logged in in order to view your history.
+            </div>
+            <div class="info-message">
+                <p class="info-text">
+                    Don't have an account? <a href="../account/signup.html" class="signup-link">Sign up here</a> to get started.
+                </p>
+            </div>
         </div>
     </div>
+
+    <script src="../js/main.js"></script>
+    <script>
+        // Toggle sidebar visibility for small screens
+        const sidebarToggle = document.getElementById('sidebar-toggle');
+        const sidebar = document.querySelector('.sidebar');
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('show');
+            document.querySelector('.main-content').style.marginLeft = sidebar.classList.contains('show') ? '250px' : '0';
+        });
+    </script>
 </body>
 </html>

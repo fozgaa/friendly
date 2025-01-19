@@ -3,23 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Activities Board</title>
+    <title>Map | Friendly</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        #map-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px auto;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            width: 95%;
+            max-width: 1200px;
+            overflow: hidden;
+        }
+    
+        #map {
+            height: 85vh;
+            width: 100%;
+        }
+        .leaflet-popup-content a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .leaflet-popup-content .card-title {
+            margin-bottom: 0.1rem;
+        }
+
+        @media (max-width: 768px) {
+            #map {
+                height: 70vh;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Sidebar -->
-    <div class="d-flex" style="height: 100vh;">
-        <div class="bg-light p-3" style="width: 250px; height: 100vh;">
-            <h4>Menu</h4>
+    <div class="d-flex flex-column flex-md-row">
+        <nav class="sidebar bg-light p-3" role="navigation" aria-label="Main Navigation">
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link" href="../index.html">Board</a>
+                    <a class="nav-link active" href="../pages/map.html">Map</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="../pages/map.html">Map</a>
+                    <a class="nav-link" href="../index.html">Board</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../pages/chat.html">Chat</a>
@@ -29,7 +60,6 @@
                 </li>
             </ul>
             <hr>
-            <h4>Account</h4>
             <ul class="nav flex-column">
                 <li class="nav-item">
                     <a class="nav-link" href="../account/login.html">Login</a>
@@ -38,34 +68,52 @@
                     <a class="nav-link" href="../account/signup.html">Sign Up</a>
                 </li>
             </ul>
-        </div>
+        </nav>
 
         <!-- Main Content -->
-        <div class="container my-4" style="flex: 1;">
-            <h1 class="text-center">Map</h1>
-            <div id="map" style="height: 80vh;"></div>
-        </div>
+        <main class="container my-4 main-content" style="flex: 1;" role="main">
+            <button class="btn btn-primary d-md-none" id="sidebar-toggle" aria-label="Toggle Sidebar">☰</button>
+            <div id="map-container">
+                <div id="map" aria-label="Interactive Map"></div>
+            </div>
+        </main>
     </div>
 
+    <script src="../js/main.js"></script>
     <script>
-        // Initialize map
-        const map = L.map('map').setView([52.2298, 21.0118], 13);
+        const sidebarToggle = document.getElementById('sidebar-toggle');
+        const sidebar = document.querySelector('.sidebar');
+        const mainContent = document.querySelector('.main-content');
 
-        // Add OpenStreetMap tiles
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('show');
+            mainContent.style.marginLeft = sidebar.classList.contains('show') ? '250px' : '0';
+        });
+
+        const map = L.map('map', { attributionControl: false }).setView([52.2298, 21.0118], 13);
+
+        L.tileLayer('https://cartodb-basemaps-a.global.ssl.fastly.net/rastertiles/voyager/{z}/{x}/{y}.png', {
             maxZoom: 19,
-            attribution: '© OpenStreetMap contributors'
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        // Load activities data
+        L.control.attribution({ position: 'bottomright' }).addTo(map);
+
         fetch('../data/activities.json')
             .then(response => response.json())
             .then(data => {
-                data.forEach(activity => {
-                    if (activity.lat && activity.lng) {
-                        L.marker([activity.lat, activity.lng])
+                data.forEach(({ id, lat, lng, title, description }) => {
+                    if (lat && lng) {
+                        const popupContent = `
+                            <div class="card-body">
+                                <h5 class="card-title">${title}</h5>
+                                <p class="card-text">${description}</p>
+                                <a href="activity.html?id=${id}" class="btn btn-link p-0">See details</a>
+                            </div>
+                        `;
+                        L.marker([lat, lng])
                             .addTo(map)
-                            .bindPopup(`<b>${activity.title}</b><br>${activity.description}`);
+                            .bindPopup(popupContent);
                     }
                 });
             })
